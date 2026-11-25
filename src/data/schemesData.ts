@@ -1,0 +1,401 @@
+import type { FinancialScheme, WeeklyCropHealthEntry } from '../types/cropsense';
+
+export const FINANCIAL_SCHEMES: FinancialScheme[] = [
+  {
+    id: 'pmfby',
+    name: 'Pradhan Mantri Fasal Bima Yojana (PMFBY)',
+    shortName: 'PMFBY',
+    category: 'Insurance',
+    authority: 'Ministry of Agriculture & Farmers Welfare, Govt. of India',
+    states: ['All India'],
+    crops: ['All Crops'],
+    description:
+      'Flagship crop insurance programme protecting farmers against yield loss from drought, flood, unseasonal rain, hailstorm, landslides, pests, and post-harvest calamities at heavily subsidized farmer premiums.',
+    benefits: [
+      'Farmer premium capped at 2% for Kharif, 1.5% for Rabi, and 5% for commercial/horticultural crops',
+      'Covers prevented sowing, standing crop loss, localized calamities, and post-harvest damage up to 14 days',
+      'Direct Benefit Transfer (DBT) claim settlement directly into farmer bank accounts',
+    ],
+    eligibility: [
+      'All farmers (loanee and non-loanee, including tenant farmers & sharecroppers) cultivating notified crops in notified areas',
+      'Enrollment must be completed before the seasonal cut-off date',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      'Land Ownership Record (7/12, RTC, Khasra/Khatauni) or Tenancy Agreement',
+      'Bank Passbook / Cancelled Cheque (Aadhaar-seeded)',
+      'Sowing Certificate from Patwari / Village Agriculture Officer',
+    ],
+    applicationUrl: 'https://pmfby.gov.in/',
+    deadline: 'Kharif: July 31 | Rabi: December 31 (varies by state notification)',
+  },
+  {
+    id: 'rwbcis',
+    name: 'Restructured Weather Based Crop Insurance Scheme (RWBCIS)',
+    shortName: 'RWBCIS',
+    category: 'Insurance',
+    authority: 'Ministry of Agriculture & Farmers Welfare, Govt. of India',
+    states: ['All India'],
+    crops: ['Cotton', 'Tomato', 'Onion', 'Sugarcane', 'Maize', 'Soybean'],
+    description:
+      'Weather-index crop insurance that triggers faster automatic payouts when rainfall, temperature, wind speed, or humidity deviate beyond crop-safe thresholds at local weather stations.',
+    benefits: [
+      'Faster parametric claim settlement based on verified weather triggers without lengthy crop-cutting delays',
+      'Same capped farmer premium structure as PMFBY (1.5%–5% depending on season and crop)',
+    ],
+    eligibility: [
+      'Farmers growing notified weather-sensitive crops in RWBCIS-notified blocks/tehsils',
+      'Valid insurable interest in the insured plot',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      'Land Record Extract / Lease Proof',
+      'Active Bank Account Details',
+      'Crop Sowing Declaration',
+    ],
+    applicationUrl: 'https://pmfby.gov.in/',
+    deadline: 'Seasonal cut-off per state weather-term sheet',
+  },
+  {
+    id: 'pm-kisan',
+    name: 'PM-KISAN Samman Nidhi Yojana',
+    shortName: 'PM-KISAN',
+    category: 'Central & State Schemes',
+    authority: 'Department of Agriculture & Farmers Welfare, Govt. of India',
+    states: ['All India'],
+    crops: ['All Crops'],
+    description:
+      'Direct annual income support scheme providing ₹6,000 per year in three equal four-monthly installments to help landholding farmer families procure inputs like seeds, fertilizers, and crop protection.',
+    benefits: [
+      '₹6,000/year paid in 3 installments of ₹2,000 directly into Aadhaar-linked bank accounts',
+      'Usable flexibly for seasonal inputs, emergency crop protection, or household resilience',
+    ],
+    eligibility: [
+      'All landholding farmer families with cultivable land recorded in state land registries',
+      'e-KYC and Aadhaar-bank seeding completed (excludes income-tax payers and institutional landholders)',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card (with linked mobile for e-KYC)',
+      'State Landholding Document (RoR / 7/12 / RTC)',
+      'Aadhaar-seeded Bank Account',
+    ],
+    applicationUrl: 'https://pmkisan.gov.in/',
+    deadline: 'Open year-round (complete e-KYC before each installment release)',
+  },
+  {
+    id: 'kcc',
+    name: 'Kisan Credit Card (KCC) & Modified Interest Subvention',
+    shortName: 'KCC',
+    category: 'Central & State Schemes',
+    authority: 'RBI / NABARD / Ministry of Agriculture',
+    states: ['All India'],
+    crops: ['All Crops'],
+    description:
+      'Low-interest revolving agricultural credit line covering crop cultivation expenses, post-harvest needs, and allied dairy/fodder activities with prompt repayment interest subvention.',
+    benefits: [
+      'Effective interest rate as low as 4% per annum for loans up to ₹3 lakh with prompt repayment',
+      'Collateral-free credit limit up to ₹2 lakh for smallholder farmers',
+      'Flexible drawal and repayment aligned with Kharif/Rabi harvest cycles',
+    ],
+    eligibility: [
+      'Owner cultivators, tenant farmers, oral lessees, and Self Help Group (SHG) / Joint Liability Group farmers',
+    ],
+    requiredDocuments: [
+      'Completed KCC Application Form',
+      'Aadhaar Card & PAN / Voter ID',
+      'Land Record / Tenancy Certificate',
+      'Passport-size Photographs',
+    ],
+    applicationUrl: 'https://www.jansamarth.in/',
+    deadline: 'Open year-round through Public/Cooperative/Regional Rural Banks & CSCs',
+  },
+  {
+    id: 'pmksy-pdmc',
+    name: 'Per Drop More Crop (PMKSY Micro-Irrigation Subsidy)',
+    shortName: 'PMKSY-PDMC',
+    category: 'Subsidies',
+    authority: 'Department of Agriculture & Farmers Welfare / State Horticulture Depts',
+    states: ['All India'],
+    crops: ['Cotton', 'Sugarcane', 'Tomato', 'Onion', 'Soybean', 'Maize', 'Other'],
+    description:
+      'Capital subsidy programme helping farmers install drip and sprinkler irrigation systems to prevent excessive or insufficient watering stress and improve fertilizer efficiency.',
+    benefits: [
+      '55% subsidy for small & marginal farmers and 45% for other farmers (often topped up to 75–90% by states like Maharashtra, Karnataka & Gujarat)',
+      'Reduces water use by 30–50% and minimizes fungal leaf-wetness disease outbreaks',
+    ],
+    eligibility: [
+      'Farmers with an assured water source (borewell, open well, farm pond, or canal) and valid land title/lease',
+      'Up to 5 hectares per beneficiary family',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      '7/12 / RTC Land Extract & Water Source Certificate',
+      'Bank Passbook Copy',
+      'Quotation from State-Empanelled Drip/Sprinkler Vendor',
+    ],
+    applicationUrl: 'https://pmksy.gov.in/',
+    deadline: 'State-wise annual online lottery/first-come window',
+  },
+  {
+    id: 'smam-crm',
+    name: 'SMAM & Crop Residue Management (CRM) Machinery Subsidy',
+    shortName: 'SMAM / CRM',
+    category: 'Subsidies',
+    authority: 'Ministry of Agriculture & Farmers Welfare',
+    states: ['All India'],
+    crops: ['Rice', 'Wheat', 'Cotton', 'Sugarcane', 'Maize', 'Soybean'],
+    description:
+      'Financial subsidy for purchasing shredders, mulchers, balers, happy seeders, and composting equipment—or hiring them via Custom Hiring Centres—to monetize crop residues instead of burning.',
+    benefits: [
+      '40–50% subsidy for individual farmers on approved farm machinery and residue balers',
+      'Up to 80% subsidy for Farmer Producer Organizations (FPOs) and cooperatives establishing Custom Hiring Centres',
+    ],
+    eligibility: [
+      'Individual farmers, FPOs, SHGs, and rural cooperatives registered on the state DBT agriculture portal',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      'Land Record Document',
+      'Bank Account Details',
+      'Caste Certificate (if claiming SC/ST priority subsidy slab)',
+    ],
+    applicationUrl: 'https://agrimachinery.nic.in/',
+    deadline: 'State seasonal DBT application windows',
+  },
+  {
+    id: 'pkvy-organic',
+    name: 'Paramparagat Krishi Vikas Yojana (PKVY) & Composting Support',
+    shortName: 'PKVY',
+    category: 'Subsidies',
+    authority: 'National Mission for Sustainable Agriculture (NMSA)',
+    states: ['All India'],
+    crops: ['All Crops'],
+    description:
+      'Cluster-based financial assistance encouraging organic composting, bio-fertilizers, vermicompost pits, PGS-India organic certification, and direct marketing of organic produce.',
+    benefits: [
+      'Up to ₹31,500 per hectare over 3 years for organic inputs, on-farm composting, PGS certification, and value-addition',
+      'Direct market linkage support via Jaivik Kheti portal',
+    ],
+    eligibility: [
+      'Farmers forming or joining a cluster of at least 20 hectares (minimum 20 farmers)',
+      'Maximum assistance up to 2 hectares per farmer',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      'Landholding Record',
+      'Cluster Membership Registration via Block Agriculture Office',
+      'Bank Account Details',
+    ],
+    applicationUrl: 'https://pgsindia-ncof.gov.in/',
+    deadline: 'Annual district cluster enrollment through Agriculture Department',
+  },
+  {
+    id: 'sdrf-compensation',
+    name: 'SDRF / NDRF Crop Loss Input Subsidy & Calamity Compensation',
+    shortName: 'SDRF Relief',
+    category: 'Compensation',
+    authority: 'State Revenue & Agriculture Departments / Ministry of Home Affairs',
+    states: ['All India'],
+    crops: ['All Crops'],
+    description:
+      'Emergency financial relief paid to farmers suffering 33% or more crop loss due to notified floods, droughts, hailstorms, cyclones, unseasonal rain, or severe pest outbreaks.',
+    benefits: [
+      'Per-hectare input subsidy for rainfed, irrigated, and perennial crops (typically ₹8,500 to ₹22,500/ha depending on crop type & state top-up)',
+      'Available even to farmers who were not enrolled in private crop insurance when disaster is state-notified',
+    ],
+    eligibility: [
+      'Small and marginal farmers (and other farmers per state notification) with >=33% verified crop damage in notified disaster villages',
+      'Joint panchnama / e-Peek Pahani verification by revenue and agriculture officers',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card & Bank Passbook (DBT enabled)',
+      'Land Record (7/12 / RTC / Khasra) with crop sowing entry',
+      'Signed Panchnama / Damage Assessment Slip from Patwari / Talathi',
+    ],
+    applicationUrl: 'https://ndmindia.mha.gov.in/',
+    deadline: 'Report damage immediately after event; claim within state notification window',
+  },
+  {
+    id: 'mh-mahadbt',
+    name: 'Maharashtra MahaDBT Shetkari & Namo Shetkari Samman Nidhi',
+    shortName: 'MahaDBT',
+    category: 'Central & State Schemes',
+    authority: 'Department of Agriculture, Government of Maharashtra',
+    states: ['Maharashtra'],
+    crops: ['Cotton', 'Soybean', 'Sugarcane', 'Onion', 'Tomato', 'Wheat'],
+    description:
+      'Unified Maharashtra farmer portal offering ₹6,000/year state income support (in addition to PM-KISAN), subsidized drip irrigation, farm ponds, polyhouses, and post-harvest storage.',
+    benefits: [
+      'Additional ₹6,000/year under Namo Shetkari Mahasamman Nidhi (total ₹12,000/yr combined with PM-KISAN)',
+      'Single-window DBT subsidies for micro-irrigation, crop protection sprayers, and onion storage sheds',
+    ],
+    eligibility: [
+      'PM-KISAN registered landholding farmers in Maharashtra with updated e-Peek Pahani',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      '7/12 & 8A Land Extracts',
+      'e-Peek Pahani Crop Registration',
+      'Aadhaar-linked Bank Account',
+    ],
+    applicationUrl: 'https://mahadbt.maharashtra.gov.in/',
+    deadline: 'Open year-round via MahaDBT Farmer Login',
+  },
+  {
+    id: 'ka-raitamitra',
+    name: 'Karnataka Krishi Bhagya & FRUITS Farmer Assistance',
+    shortName: 'Raita Mitra',
+    category: 'Central & State Schemes',
+    authority: 'Department of Agriculture, Government of Karnataka',
+    states: ['Karnataka'],
+    crops: ['Cotton', 'Maize', 'Sugarcane', 'Tomato', 'Onion', 'Rice', 'Soybean'],
+    description:
+      'Dryland resilience and farmer subsidy programme supporting rainwater-harvesting Krishi Honda (farm ponds), polythene lining, diesel/solar lift pumps, and micro-irrigation through Karnataka FRUITS ID.',
+    benefits: [
+      '80%–90% subsidy on farm ponds, polythene lining, and protective irrigation equipment',
+      'Seamless eligibility across state crop loss relief and seed subsidies via FRUITS Farmer ID',
+    ],
+    eligibility: [
+      'Farmers registered on the Karnataka FRUITS portal holding agricultural land in notified dryland/rainfed taluks',
+    ],
+    requiredDocuments: [
+      'Karnataka FRUITS ID',
+      'Aadhaar Card',
+      'RTC (Pahani) Land Record',
+      'Bank Account Passbook',
+    ],
+    applicationUrl: 'https://raitamitra.karnataka.gov.in/',
+    deadline: 'Apply via nearest Raitha Samparka Kendra (RSK) during seasonal enrollment',
+  },
+  {
+    id: 'ngo-wotr',
+    name: 'WOTR Climate-Resilient Agriculture & Regenerative Farming Support',
+    shortName: 'WOTR Grant',
+    category: 'NGO Grants',
+    authority: 'Watershed Organisation Trust (WOTR)',
+    states: ['Maharashtra', 'Madhya Pradesh', 'Telangana', 'Andhra Pradesh', 'Rajasthan', 'Karnataka'],
+    crops: ['Cotton', 'Soybean', 'Maize', 'Onion', 'Tomato', 'Wheat'],
+    description:
+      'NGO-led smallholder support offering co-funded watershed structures, organic composting kits, weather-linked crop advisories, and FPO market & carbon-credit aggregation.',
+    benefits: [
+      'Subsidized organic input kits, vermicompost beds, and micro-watershed conservation grants',
+      'Free climate-smart agronomy training and FPO onboarding for soil carbon & residue recovery',
+    ],
+    eligibility: [
+      'Small and marginal farmers and Women SHGs residing in WOTR project clusters or partner FPO blocks',
+    ],
+    requiredDocuments: [
+      'Aadhaar / Identity Proof',
+      'Basic Landholding or Farmer Group (SHG/FPO) Membership Proof',
+      'Village Gram Sabha / Cluster Endorsement',
+    ],
+    applicationUrl: 'https://wotr.org/',
+    deadline: 'Rolling cluster intake by district partner offices',
+  },
+  {
+    id: 'ngo-baif',
+    name: 'BAIF Smallholder Livestock, Fodder & Agri-Livelihood Programme',
+    shortName: 'BAIF Support',
+    category: 'NGO Grants',
+    authority: 'BAIF Development Research Foundation',
+    states: ['Maharashtra', 'Karnataka', 'Gujarat', 'Uttar Pradesh', 'Rajasthan', 'Madhya Pradesh', 'Bihar'],
+    crops: ['All Crops'],
+    description:
+      'Rural NGO initiative helping farmers build supplementary income through safe crop-residue fodder banks, dairy integration, tree-based Wadi orchards, and soil health restoration.',
+    benefits: [
+      'Technical & material grant support for fodder chaff-cutters, silage bags, and mixed-orchard saplings',
+      'Connects crop-loss affected farmers to dairy cooperatives and residue-to-fodder markets',
+    ],
+    eligibility: [
+      'Smallholder, marginal, and tribal farming households in BAIF operational districts',
+    ],
+    requiredDocuments: [
+      'Aadhaar Card',
+      'Household / Farmer Registration via Local BAIF Field Centre',
+      'Land or Homestead Usage Proof',
+    ],
+    applicationUrl: 'https://baif.org.in/',
+    deadline: 'Rolling enrollment through district BAIF centres',
+  },
+];
+
+export const ILLUSTRATIVE_WEEKLY_HEALTH_ENTRIES: WeeklyCropHealthEntry[] = [
+  {
+    id: 'seed-week-1',
+    weekLabel: 'Week 1',
+    date: '2026-10-12',
+    notes: 'Uniform vegetative canopy across main plot; morning dew present.',
+    healthScore: 86,
+    diseaseOutbreakProbability: 14,
+    diseaseSeverity: 'Low',
+    irrigationStatus: 'Optimal',
+    stressLevel: 'green',
+    stressSummary: 'Healthy foliage with balanced soil moisture',
+    explanation:
+      'Illustrative baseline entry: Canopy density and leaf coloration are strong with minimal spotting risk.',
+    recommendedActions: [
+      'Continue twice-weekly morning leaf inspection along field borders',
+      'Maintain current drip/furrow irrigation interval and avoid late-evening watering',
+    ],
+    isIllustrative: true,
+  },
+  {
+    id: 'seed-week-2',
+    weekLabel: 'Week 2',
+    date: '2026-10-19',
+    notes: 'Slight yellowing on lower leaves after humid spell and extra irrigation.',
+    healthScore: 76,
+    diseaseOutbreakProbability: 32,
+    diseaseSeverity: 'Moderate',
+    irrigationStatus: 'Excessive',
+    stressLevel: 'yellow',
+    stressSummary: 'Early moisture stress & moderate fungal watch',
+    explanation:
+      'Illustrative progression entry: Elevated humidity combined with heavy watering increases early leaf-blight and root-zone wetness stress.',
+    recommendedActions: [
+      'Skip one irrigation cycle and clear field drainage furrows immediately',
+      'Inspect underside of lower leaves for early fungal lesions or sucking pests',
+      'Ensure proper canopy airflow before next nutrient top-dressing',
+    ],
+    isIllustrative: true,
+  },
+  {
+    id: 'seed-week-3',
+    weekLabel: 'Week 3',
+    date: '2026-10-26',
+    notes: 'Spots visible on 12–15% of border plants; soil surface still damp.',
+    healthScore: 67,
+    diseaseOutbreakProbability: 48,
+    diseaseSeverity: 'Moderate',
+    irrigationStatus: 'Excessive',
+    stressLevel: 'yellow',
+    stressSummary: 'Moderate disease pressure — early intervention advised',
+    explanation:
+      'Illustrative progression entry: Health score dipped 9 points week-over-week as localized spotting expanded under humid conditions.',
+    recommendedActions: [
+      'Upload a close-up leaf photo to AI Chatbot for targeted preliminary diagnosis',
+      'Consult your local KVK / agronomist on preventative bio-fungicide or approved spray timing',
+      'Isolate heavily damaged lower leaves to curb spore spread',
+    ],
+    isIllustrative: true,
+  },
+  {
+    id: 'seed-week-4',
+    weekLabel: 'Week 4',
+    date: '2026-11-02',
+    notes: 'Drainage cleared and preventive spray applied; new upper shoots clean.',
+    healthScore: 79,
+    diseaseOutbreakProbability: 24,
+    diseaseSeverity: 'Low',
+    irrigationStatus: 'Optimal',
+    stressLevel: 'green',
+    stressSummary: 'Canopy recovering — outbreak probability declining',
+    explanation:
+      'Illustrative recovery entry: Improved drainage and timely preventive care reduced disease spread and stabilized upper foliage vigor.',
+    recommendedActions: [
+      'Resume regular weekly photo logging to confirm sustained recovery',
+      'Track upcoming 7-day rainfall forecast before scheduling fertilizer application',
+    ],
+    isIllustrative: true,
+  },
+];

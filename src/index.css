@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF8F5;
+  --foreground: #2D3A2E;
+  --card: #FAF8F5;
+  --card-foreground: #2D3A2E;
+  --popover: #FAF8F5;
+  --popover-foreground: #2D3A2E;
+  --primary: #2D3A2E;
+  --primary-foreground: #FAF8F5;
+  --secondary: #E7EBDD;
+  --secondary-foreground: #2D3A2E;
+  --muted: #ECE9E1;
+  --muted-foreground: #6C7066;
+  --accent: #E7EBDD;
+  --accent-foreground: #2D3A2E;
+  --destructive: #B94C40;
+  --destructive-foreground: #FAF8F5;
+  --border: #DAD5CB;
+  --input: #DAD5CB;
+  --ring: #3D5A3E;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@theme {
+  --color-brand-dark: #2D3A2E;
+  --color-brand-green: #3D5A3E;
+  --color-brand-light-green: #E7EBDD;
+  --color-brand-cream: #FAF8F5;
+  --color-brand-light: #F5F3EF;
+  --color-brand-border: #DAD5CB;
+  --color-brand-muted: #77786F;
+  --color-brand-success: #4F8051;
+  --color-brand-warning: #D59A36;
+  --color-brand-danger: #B94C40;
+
+  /* Exact brand typography: Manrope for headings, Inter for body/labels/UI */
+  --font-manrope: "Manrope", "Noto Sans Devanagari", "Noto Sans Kannada", sans-serif;
+  --font-inter: "Inter", "Noto Sans Devanagari", "Noto Sans Kannada", sans-serif;
+  --font-sans: "Inter", "Noto Sans Devanagari", "Noto Sans Kannada", sans-serif;
+  --font-helvetica-neue: "Inter", "Noto Sans Devanagari", "Noto Sans Kannada", sans-serif;
+  --font-playfair: "Manrope", "Noto Sans Devanagari", "Noto Sans Kannada", sans-serif;
+  --font-logo-serif: "Playfair Display", Georgia, serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAF8F5;
+    color: #2D3A2E;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-inter);
+    font-weight: 400;
+    background-color: #FAF8F5;
+    color: #2D3A2E;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-manrope);
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    &:focus-visible {
+      outline: 2px solid #3D5A3E;
+      outline-offset: 2px;
+    }
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-down {
+  animation: fade-down 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stagger-1 {
+  animation-delay: 0ms;
+}
+
+.stagger-2 {
+  animation-delay: 120ms;
+}
+
+.stagger-3 {
+  animation-delay: 240ms;
+}
+
+.stagger-4 {
+  animation-delay: 360ms;
+}
+
+.stagger-5 {
+  animation-delay: 480ms;
+}
+
+.stagger-6 {
+  animation-delay: 600ms;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-sky-mask {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58.5%, transparent 63.5%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58.5%, transparent 63.5%);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-down {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

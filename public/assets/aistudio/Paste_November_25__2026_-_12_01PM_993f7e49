@@ -1,0 +1,1216 @@
+# CROPSENSE — COMPLETE WEBSITE DEVELOPMENT MASTER PROMPT
+
+## 1. PROJECT OVERVIEW
+
+Build a complete, responsive, premium-quality agricultural intelligence web platform called **CropSense**.
+
+**Brand name:** CropSense  
+**Tagline:** Your Crop Health, Powered by AI.  
+**Category:** AgriTech | Artificial Intelligence | Computer Vision | Predictive Analytics | Precision Agriculture
+
+### Project objective
+
+CropSense is an AI-powered predictive crop health monitoring platform designed to help farmers detect crop diseases early, monitor environmental conditions, analyze historical satellite imagery, predict disease risks, and receive personalized preventive and treatment recommendations.
+
+The platform should combine AI-powered plant disease detection, environmental analysis, satellite-based historical monitoring, and a multilingual AI agricultural assistant.
+
+The application should look like a professionally funded AgriTech startup, not a generic AI-generated dashboard or a basic hackathon prototype.
+
+The entire website must have a consistent design language, smooth navigation, responsive layouts, realistic agricultural data visualizations, and working frontend interactions.
+
+---
+
+# 2. TECHNOLOGY STACK
+
+Use the following technologies:
+
+- React.js
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React for icons
+- React Router DOM for navigation
+- Recharts for charts and data visualization
+- Framer Motion for subtle transitions
+- HTML5 video for the homepage background
+- Modular React components
+- LocalStorage for prototype data persistence
+- API-ready architecture for future backend integration
+
+### Code structure
+
+Organize the application into reusable components.
+
+Suggested structure:
+
+src/
+  components/
+    Navbar.tsx
+    Footer.tsx
+    LanguageSelector.tsx
+    FarmDetails.tsx
+    ChatInterface.tsx
+    ChatMessage.tsx
+    ImageUploader.tsx
+    DiseaseResult.tsx
+    RiskIndicator.tsx
+    HistoricalCharts.tsx
+    SatelliteViewer.tsx
+    ReportCard.tsx
+    LoadingState.tsx
+    MobileNavigation.tsx
+
+  pages/
+    Home.tsx
+    Dashboard.tsx
+    AIChatbot.tsx
+    HistoricalAnalysis.tsx
+    Reports.tsx
+
+  context/
+    LanguageContext.tsx
+    FarmContext.tsx
+
+  services/
+    aiService.ts
+    diseaseService.ts
+    weatherService.ts
+    satelliteService.ts
+
+  data/
+    translations.ts
+    cropData.ts
+    mockData.ts
+
+  hooks/
+    useFarmDetails.ts
+    useLanguage.ts
+
+  App.tsx
+  main.tsx
+  index.css
+
+Do not put the entire application into one giant component.
+
+Keep components reusable, maintainable, and easy to extend.
+
+---
+
+# 3. BRAND IDENTITY AND DESIGN SYSTEM
+
+The visual direction must be inspired by the attached Palomar Labs homepage reference.
+
+Do not copy the Palomar logo or branding. Use the same visual language and replace all branding with CropSense.
+
+### Overall design direction
+
+- Premium editorial website aesthetic.
+- Nature-inspired landscape imagery.
+- Warm ivory and cream surfaces.
+- Deep forest-green typography.
+- Minimal and sophisticated interface.
+- Large elegant headlines.
+- Generous whitespace.
+- Fine borders.
+- Subtle shadows.
+- Clean typography.
+- Real agricultural imagery.
+- Natural photography instead of artificial-looking illustrations.
+
+The website must not look like a generic SaaS dashboard template.
+
+### Colour palette
+
+Use these exact base colours:
+
+| Token | Colour |
+|---|---|
+| Dark Forest | #2D3A2E |
+| Primary Green | #3D5A3E |
+| Light Green | #E7EBDD |
+| Cream | #FAF8F5 |
+| Light Background | #F5F3EF |
+| Border | #DAD5CB |
+| Muted Text | #77786F |
+| Success | #4F8051 |
+| Warning | #D59A36 |
+| Danger | #B94C40 |
+| White | #FFFFFF |
+
+Use green, yellow, orange and red only where they communicate crop health, warnings, disease severity, and status.
+
+Avoid excessive gradients, neon colours, glowing borders, glassmorphism, and unnecessary 3D effects.
+
+### Typography
+
+Import the following fonts:
+
+<link href="https://db.onlinewebfonts.com/c/0e6de1ec911a2e267ff136bbdd384a44?family=Helvetica+Neue+Light" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Oswald:wght@500&family=Montserrat:wght@700&family=Roboto+Slab:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+Use:
+
+- Helvetica Neue Light for body text, navigation, labels and general UI.
+- Playfair Display for large editorial headlines.
+- Keep headings refined, lightweight and readable.
+
+Do not use heavy generic typography everywhere.
+
+### Shape and spacing system
+
+- Main content cards: subtle 4–8px corner radius.
+- Form inputs: 4–6px corner radius.
+- Buttons: 4–6px corner radius.
+- Borders: thin and understated.
+- Consistent padding and alignment.
+- No excessive rounded pill cards.
+- Avoid unnecessarily large shadows.
+
+---
+
+# 4. WEBSITE ROUTING
+
+Create the following routes:
+
+| Route | Page |
+|---|---|
+| / | Home |
+| /dashboard | Main Dashboard |
+| /chatbot | AI Chatbot & Disease Analysis |
+| /historical-analysis | Historical Analysis |
+| /reports | Reports |
+
+All routes must work correctly.
+
+The navbar should remain consistent throughout the application.
+
+Use React Router DOM.
+
+Do not create dead links or buttons.
+
+---
+
+# 5. HOMEPAGE — PALOMAR-INSPIRED LANDING PAGE
+
+The homepage is the most important visual introduction to CropSense.
+
+Recreate the supplied Palomar Labs homepage aesthetic using CropSense branding.
+
+The homepage must contain only:
+
+1. Fixed navigation bar.
+2. Full-viewport landscape video hero.
+3. Main headline.
+4. Announcement pill.
+5. Backed-by style brand strip.
+
+Do not add additional marketing sections, pricing sections, testimonials, feature grids, or unnecessary content.
+
+## 5.1 Navbar
+
+Position:
+
+- Fixed at top.
+- Full width.
+- z-index 50.
+- Transparent initially.
+- Smooth transition when scrolling.
+
+Desktop layout:
+
+Left:
+- SOLUTIONS with a small ChevronDown icon.
+- PLANS.
+- NEWS.
+
+Center:
+- CropSense logo.
+- Minimal botanical leaf symbol.
+- CropSense wordmark.
+
+Right:
+- TRY IT FREE button.
+
+Use forest-green typography.
+
+When the user scrolls more than 20px, transition the navbar to:
+
+- Cream background.
+- 90% opacity.
+- Backdrop blur.
+- Subtle shadow.
+
+Clicking the CropSense logo should navigate to Home.
+
+Clicking Try It Free should navigate to /dashboard.
+
+The Solutions button should not open an invented mega-menu.
+
+## 5.2 Mobile navbar
+
+For screens below 768px:
+
+- Hide desktop navigation links.
+- Hide desktop CTA.
+- Display a hamburger menu.
+- Use a full-screen cream mobile navigation overlay.
+- Show Home, Dashboard, Reports and Try It Free.
+- Close the menu after selecting an item.
+- Prevent background scrolling while the menu is open.
+
+## 5.3 Background video
+
+Use this exact video URL:
+
+https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260820_010308_b1636845-4c15-4ab6-b0c9-9a29bfb0c6e3.mp4
+
+Implementation:
+
+- autoplay
+- muted
+- loop
+- playsInline
+- object-cover
+- object-position: bottom
+- width: 100%
+- height: 100%
+
+The video must fill the complete viewport.
+
+Do not add:
+- Dark overlay.
+- Gradient overlay.
+- Poster image.
+- Video controls.
+- Mute button.
+- Decorative blobs.
+
+If video playback fails, show a neutral cream fallback rather than inventing another video URL.
+
+## 5.4 Hero content
+
+Left-aligned content.
+
+Maximum width: 1280px.
+
+Padding:
+- Desktop: 36px top.
+- Mobile: 112px top.
+
+Announcement pill:
+
+"Live for everyone today! Smarter farming starts here."
+
+Include a small right-arrow icon.
+
+Main headline:
+
+**Your crops deserve an earlier warning.**
+
+Second line:
+
+**One intelligent system to protect every harvest.**
+
+Use large Helvetica Neue Light typography with an editorial appearance.
+
+Desktop font size: approximately 64px.
+
+Mobile font size: approximately 36px.
+
+No additional hero paragraph and no second CTA.
+
+## 5.5 Trusted-by strip
+
+Below the headline, display:
+
+BACKED BY
+
+Use five text-only wordmarks:
+
+- Meridian
+- STELLEX
+- Luminar
+- OVERLAND
+- Kinetic
+
+These are visual placeholders, not claims of actual partnerships. Do not imply that these organizations officially endorse CropSense.
+
+Use different typography styles for each wordmark.
+
+---
+
+# 6. MAIN DASHBOARD
+
+Route: /dashboard
+
+The dashboard should follow the same visual language as the homepage.
+
+Use a full-width natural landscape background with a warm cream and forest-green colour palette.
+
+Do not create a typical dark SaaS dashboard.
+
+## 6.1 Dashboard Navbar
+
+Left:
+
+- CropSense leaf logo.
+- CropSense wordmark.
+
+Center:
+
+- Home
+- Dashboard
+- Reports
+
+Right:
+
+- Language selector.
+- New Analysis button.
+
+The Dashboard item should have a subtle active background.
+
+The New Analysis button should navigate to the AI Chatbot page.
+
+## 6.2 Main dashboard layout
+
+IMPORTANT: The dashboard must contain exactly TWO main parent containers.
+
+Use a two-column layout.
+
+Desktop:
+
+- Left container: 35% width.
+- Right container: 65% width.
+- Both containers must have exactly the same height.
+- Both containers must have the same background colour.
+- Both must align at the top and bottom.
+- Use consistent borders, padding and visual treatment.
+
+Mobile:
+
+- Stack the two containers vertically.
+- Farm Details first.
+- AI Workspace second.
+- Ensure no horizontal scrolling.
+- Keep all form controls usable.
+
+Both main containers should use the same warm cream surface, subtle border, and consistent corner radius.
+
+Do not give the right container a different background.
+
+---
+
+## 6.3 LEFT CONTAINER — FARM DETAILS
+
+Heading:
+
+**Farm Details**
+
+Subheading:
+
+Provide your farm information for accurate analysis.
+
+Create the following form fields:
+
+### Location
+
+1. State
+   - Dropdown or searchable input.
+   - Default: Maharashtra.
+
+2. City
+   - Searchable input.
+   - Default: Amravati.
+
+3. Latitude
+   - Numeric input.
+   - Optional.
+
+4. Longitude
+   - Numeric input.
+   - Optional.
+
+Allow location or coordinates as alternative ways to identify the farm.
+
+### Farm information
+
+5. Farm Size
+   - Numeric input.
+   - Unit dropdown:
+     - Acres
+     - Hectares
+     - Square Metres
+
+6. Crop
+   - Searchable dropdown.
+   - Cotton
+   - Wheat
+   - Rice
+   - Soybean
+   - Maize
+   - Sugarcane
+   - Tomato
+   - Onion
+   - Other.
+
+7. Season
+   - Dropdown:
+     - Kharif
+     - Rabi
+     - Zaid
+
+8. Last Year's Yield Value
+   - Numeric input.
+   - Currency: INR ₹.
+
+### Save button
+
+Text:
+
+SAVE FARM DETAILS
+
+On clicking:
+
+- Validate required fields.
+- Save farm details.
+- Persist details using LocalStorage.
+- Display a clear success message.
+- Make saved information available to the AI chatbot and Historical Analysis pages.
+- Allow the user to edit saved details.
+
+Required fields should be clearly identified.
+
+Do not invent coordinates or farm-specific measurements.
+
+---
+
+## 6.4 RIGHT CONTAINER — FARM INTELLIGENCE
+
+At the top display:
+
+Small uppercase label:
+
+FARM INTELLIGENCE
+
+Main headline:
+
+**Your Crop Health, Powered by AI**
+
+Description:
+
+Detect diseases early, analyze risks, and get personalized recommendations for a healthier yield.
+
+Below the heading create two feature cards.
+
+Both cards must use the same cream background as the parent Farm Details container.
+
+### CARD 1 — AI CHATBOT & DISEASE ANALYSIS
+
+Title:
+
+AI Chatbot & Disease Analysis
+
+Description:
+
+Ask questions, upload plant images, get disease detection, risk prediction, and treatment advice.
+
+Visual:
+
+- Minimal leaf icon.
+- Realistic botanical leaf photograph.
+- Forest-green arrow button.
+
+On clicking, navigate to:
+
+/chatbot
+
+### CARD 2 — HISTORICAL ANALYSIS
+
+Title:
+
+Historical Analysis
+
+Description:
+
+Explore five years of satellite data, track field changes, and generate a detailed analysis report.
+
+Visual:
+
+- Chart icon.
+- Realistic agricultural field or satellite imagery.
+- Forest-green arrow button.
+
+On clicking, navigate to:
+
+/historical-analysis
+
+Make both cards equal in height.
+
+Do not add unnecessary extra dashboard cards.
+
+---
+
+# 7. AI CHATBOT & DISEASE ANALYSIS
+
+Route: /chatbot
+
+This is the core functional feature of CropSense.
+
+Design it as a premium AI agricultural assistant.
+
+Maintain the homepage visual identity:
+
+- Cream background.
+- Forest-green headings.
+- Minimal borders.
+- Natural leaf imagery used sparingly.
+- Clean conversational interface.
+
+## 7.1 Page header
+
+Title:
+
+AI Crop Health Assistant
+
+Subtitle:
+
+Your intelligent agricultural companion.
+
+Show the selected farm information in a compact context strip:
+
+- Location.
+- Crop.
+- Farm size.
+- Season.
+
+These values must come from saved Farm Details.
+
+## 7.2 Chat interface
+
+Build a proper conversational interface.
+
+The conversation should occupy the majority of the screen.
+
+Features:
+
+- Farmer messages on the right.
+- AI messages on the left.
+- Timestamp for each message.
+- Chat history within the current session.
+- Scrollable conversation area.
+- Input bar fixed at the bottom of the chat workspace.
+
+The interface should feel like a premium AI chatbot, not a messaging application.
+
+## 7.3 Chat input
+
+Include:
+
+- Text input.
+- Image upload icon.
+- Microphone icon.
+- Send button.
+
+Placeholder:
+
+Ask anything about your crop...
+
+The farmer must be able to:
+
+- Ask crop-related questions.
+- Upload plant photographs.
+- Use voice input.
+- Ask about disease symptoms.
+- Ask about crop treatment.
+- Ask about weather-related risks.
+- Ask about preventive practices.
+
+## 7.4 AI chatbot actions
+
+Add quick action suggestions:
+
+- Detect Crop Disease.
+- Check Disease Risk.
+- Suggest Preventive Measures.
+- Recommend Treatment.
+- Analyze Environmental Conditions.
+
+Each suggestion should populate or initiate the relevant conversation.
+
+## 7.5 Image upload and disease detection
+
+When the farmer uploads a plant or leaf photograph:
+
+1. Display an image preview.
+2. Allow image removal before sending.
+3. Show an analyzing indicator.
+4. Pass the image to the configured AI vision service when available.
+5. Display the disease identification result.
+6. Show confidence score when the model provides one.
+7. Estimate severity only when supported by the analysis.
+8. Display recommended next steps.
+
+The result should contain:
+
+- Disease name.
+- Detection confidence.
+- Severity: Low, Moderate, High or Critical.
+- Visible symptoms.
+- Potential causes.
+- Preventive measures.
+- Suggested treatment.
+- When to seek expert agricultural assistance.
+
+Do not present mock AI results as genuine diagnostic results.
+
+If no AI backend is configured, clearly indicate that the result is a demonstration or placeholder.
+
+## 7.6 Disease result design
+
+Use a structured result card.
+
+Example demonstration:
+
+Disease Identified: Leaf Blight
+
+Confidence: 92%
+
+Severity: Moderate
+
+Risk Level: Medium
+
+Recommendations:
+
+- Inspect nearby plants.
+- Remove severely infected leaves where appropriate.
+- Improve field drainage.
+- Consult local agricultural experts regarding suitable fungicide use.
+
+Include a disclaimer that image-based disease identification is preliminary and should be verified before applying pesticides or other treatments.
+
+## 7.7 Voice features
+
+Use browser-supported speech recognition where available.
+
+Requirements:
+
+- Microphone permission handling.
+- Voice-to-text.
+- Language-aware input.
+- Text-to-speech responses.
+- Stop speaking button.
+- Clear error messages when voice functionality is unavailable.
+
+Do not pretend voice recognition is working when browser support or permission is missing.
+
+---
+
+# 8. HISTORICAL ANALYSIS
+
+Route: /historical-analysis
+
+This page focuses on five-year historical agricultural monitoring.
+
+Design:
+
+- Same cream and green palette.
+- Editorial page heading.
+- Large content workspace.
+- Clean chart layouts.
+- Satellite image viewing area.
+
+Page heading:
+
+Historical Crop Analysis
+
+Subtitle:
+
+Understand how your farmland has changed over time.
+
+## 8.1 Farm context
+
+Display saved:
+
+- Location.
+- Coordinates.
+- Crop.
+- Farm size.
+- Season.
+
+Allow users to edit farm information through the dashboard.
+
+## 8.2 Analysis configuration
+
+Include:
+
+Year range:
+- Last 5 years.
+
+Season:
+- Kharif.
+- Rabi.
+- Zaid.
+
+Analysis parameters:
+
+- Vegetation health.
+- Vegetation index trends.
+- Crop coverage.
+- Water availability.
+- Soil and land condition indicators.
+- Environmental trends.
+
+Include a prominent button:
+
+GENERATE ANALYSIS REPORT
+
+## 8.3 Historical analysis workspace
+
+The report workspace should support:
+
+### Satellite imagery
+
+A large satellite imagery viewing panel.
+
+Provide year selection from the available historical dataset.
+
+Show side-by-side imagery comparisons when data is available.
+
+Do not fabricate historical satellite imagery.
+
+### Charts
+
+Use Recharts.
+
+Create visualizations for:
+
+1. Vegetation health trends.
+2. Seasonal vegetation index.
+3. Environmental parameter trends.
+4. Crop health comparisons.
+5. Historical changes over five years.
+
+All charts must have:
+
+- Proper labels.
+- Legends.
+- Axis descriptions.
+- Tooltips.
+- Responsive sizing.
+
+### Historical report status
+
+For the initial prototype, the historical data integration can remain a placeholder.
+
+Display:
+
+Historical satellite analysis is coming soon.
+
+Provide a clear explanation that the satellite imagery and historical reports will become available when the relevant data provider is connected.
+
+Do not show invented real satellite analysis as verified data.
+
+---
+
+# 9. REPORTS PAGE
+
+Route: /reports
+
+Create a professional report management page.
+
+Heading:
+
+Crop Health Reports
+
+Subtitle:
+
+Review your previous crop health analyses and recommendations.
+
+Include:
+
+- Recent disease analysis.
+- Historical analysis reports.
+- Report creation date.
+- Crop name.
+- Farm location.
+- Disease detected.
+- Severity.
+- Analysis status.
+
+Each report should have:
+
+- View Report.
+- Download PDF.
+- View Recommendations.
+
+For the prototype:
+
+- Save generated report information in LocalStorage.
+- Allow PDF export using an appropriate PDF-generation library.
+- Display an empty state when no reports exist.
+
+Never fabricate reports that have not been generated.
+
+---
+
+# 10. MULTILINGUAL SUPPORT
+
+Implement a global language selector in the navbar.
+
+Supported languages:
+
+1. English.
+2. Hindi — हिन्दी.
+3. Marathi — मराठी.
+4. Kannada — ಕನ್ನಡ.
+
+IMPORTANT:
+
+Language switching must translate the entire interface.
+
+This includes:
+
+- Navbar.
+- Page headings.
+- Buttons.
+- Labels.
+- Form placeholders.
+- Dropdown options.
+- Chat interface.
+- Quick action suggestions.
+- Error messages.
+- Loading messages.
+- Empty states.
+- Report labels.
+- Notifications.
+
+Do not translate only chatbot responses.
+
+Use a centralized translations.ts file.
+
+Store the selected language in LocalStorage.
+
+The selected language must remain active when navigating between routes.
+
+Use UTF-8 compatible fonts and ensure Indian-language text displays correctly.
+
+---
+
+# 11. AI AND DATA INTEGRATION ARCHITECTURE
+
+Build the project with modular services so that real APIs can be connected later.
+
+### AI vision and chatbot
+
+Create aiService.ts.
+
+It should support:
+
+- Text-based crop questions.
+- Plant image analysis.
+- Disease classification.
+- Severity assessment.
+- Treatment recommendation generation.
+- Multilingual responses.
+
+Use a configurable AI provider integration.
+
+If using Gemini, keep the API key in a secure server-side environment variable.
+
+Never expose private API keys in frontend source code.
+
+### Weather data
+
+Create weatherService.ts.
+
+It should support:
+
+- Temperature.
+- Humidity.
+- Rain probability.
+- Wind.
+- Environmental conditions.
+
+Use the farm location or coordinates when a real weather API is connected.
+
+### Satellite data
+
+Create satelliteService.ts.
+
+Prepare the service architecture for historical satellite imagery and vegetation index data.
+
+Potential integrations can include:
+
+- Sentinel-2.
+- Landsat.
+- Google Earth Engine.
+
+Do not claim that an API is connected until it is actually configured.
+
+### Data architecture
+
+The prototype must use LocalStorage for:
+
+- Farm details.
+- Language preference.
+- Chat session.
+- Generated report metadata.
+
+Keep service interfaces separate from UI components.
+
+---
+
+# 12. INTERACTIONS AND FUNCTIONAL REQUIREMENTS
+
+Every interactive element must work.
+
+Implement:
+
+- Navbar routing.
+- Mobile navigation.
+- Language switching.
+- Farm form validation.
+- Save farm details.
+- Edit farm details.
+- Chat text input.
+- Image upload.
+- Image preview.
+- Image removal.
+- Voice input.
+- Send message.
+- Chat loading indicator.
+- AI response rendering.
+- Quick action suggestions.
+- Historical report generation state.
+- Chart interaction.
+- Report listing.
+- PDF download.
+- Error handling.
+- Success notifications.
+
+No dead buttons.
+
+No decorative buttons that do nothing.
+
+Where backend integration is unavailable, provide clearly labelled prototype functionality.
+
+---
+
+# 13. RESPONSIVE DESIGN
+
+The complete website must work on:
+
+- Desktop.
+- Laptop.
+- Tablet.
+- Mobile phones.
+
+### Desktop
+
+- Full navigation bar.
+- Two-column dashboard.
+- Wide chatbot workspace.
+- Large historical charts.
+
+### Tablet
+
+- Responsive navigation.
+- Adapted dashboard proportions.
+- Stacked cards when required.
+- No content overflow.
+
+### Mobile
+
+- Hamburger navigation.
+- Farm Details displayed first.
+- AI workspace below Farm Details.
+- Cards stacked vertically.
+- Full-width form controls.
+- Mobile-friendly chat input.
+- Horizontally scrollable chart containers only when necessary.
+- No horizontal page scrolling.
+
+Use responsive breakpoints thoughtfully.
+
+Do not simply shrink the desktop interface.
+
+Rearrange content to maintain usability.
+
+---
+
+# 14. ANIMATION AND MICROINTERACTIONS
+
+Use subtle animations only.
+
+Implement:
+
+### Global entrance animations
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-down {
+  animation: fade-down 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+Add subtle:
+
+- Navbar transitions.
+- Button hover states.
+- Card hover states.
+- Loading indicators.
+- Chat message entrance.
+- Navigation transitions.
+
+Avoid excessive animations.
+
+Respect prefers-reduced-motion.
+
+---
+
+# 15. PERFORMANCE AND ACCESSIBILITY
+
+Requirements:
+
+- Optimize background video loading.
+- Lazy-load images where appropriate.
+- Use responsive images.
+- Prevent unnecessary React re-renders.
+- Provide accessible form labels.
+- Keyboard-accessible navigation.
+- Visible focus states.
+- Proper contrast.
+- Semantic HTML.
+- Image alt text.
+- Error boundaries where appropriate.
+
+Do not allow the homepage video to block the rest of the website from loading.
+
+---
+
+# 16. IMPORTANT UI DESIGN RESTRICTIONS
+
+These instructions are mandatory.
+
+DO NOT:
+
+- Change the CropSense brand name.
+- Replace the Palomar-inspired homepage aesthetic with a generic SaaS template.
+- Create a dark dashboard.
+- Add unnecessary gradients.
+- Add excessive rounded cards.
+- Add glowing effects.
+- Add random 3D illustrations.
+- Use cartoon-style farming graphics.
+- Fill every empty area with unnecessary components.
+- Add fake customer logos or partnership claims.
+- Display fabricated satellite imagery as real historical evidence.
+- Display unverified disease results as confirmed diagnoses.
+- Create non-functional buttons.
+- Remove important form fields.
+- Change the two-parent-container dashboard structure.
+- Give the Farm Details and Farm Intelligence containers different backgrounds.
+- Make the two main dashboard containers different heights.
+- Break the visual identity between pages.
+
+Maintain the same typography, colours, spacing, borders, and overall aesthetic across every route.
+
+---
+
+# 17. FINAL ACCEPTANCE CRITERIA
+
+Before considering the website complete, verify all the following:
+
+### Homepage
+- Correct CropSense branding.
+- Correct background video URL.
+- Fixed transparent navbar.
+- Correct responsive navigation.
+- Exact headline and hero structure.
+- No unnecessary marketing sections.
+
+### Dashboard
+- Exactly two main parent containers.
+- Left Farm Details panel.
+- Right Farm Intelligence panel.
+- Both containers have identical background colours.
+- Both containers have matching heights.
+- Correct headline: Your Crop Health, Powered by AI.
+- AI Chatbot and Historical Analysis cards.
+- Working farm form.
+- Saved information persists.
+
+### AI Chatbot
+- Working conversational interface.
+- Image upload and preview.
+- Voice input where supported.
+- Loading states.
+- Disease result presentation.
+- Farm-aware conversation context.
+
+### Historical Analysis
+- Five-year analysis workspace.
+- Chart structure.
+- Satellite imagery placeholder.
+- Clear Coming Soon state for unconnected historical data.
+
+### Reports
+- Report listing.
+- Empty state.
+- Report viewing.
+- PDF export.
+
+### Multilingual
+- English.
+- Hindi.
+- Marathi.
+- Kannada.
+- Entire interface changes language.
+
+### Responsive
+- Desktop.
+- Tablet.
+- Mobile.
+
+### Technical
+- No TypeScript errors.
+- No missing dependencies.
+- No broken imports.
+- No broken routes.
+- No console errors.
+- No horizontal overflow.
+- No dead buttons.
+
+---
+
+# 18. FINAL DEVELOPMENT INSTRUCTION
+
+Build the complete CropSense website, not just a static visual mockup.
+
+First establish the global design system and routing, then develop the homepage, dashboard, chatbot, historical analysis, and reports pages.
+
+Preserve the supplied Palomar homepage visual reference as closely as possible while adapting the identity and copy to CropSense.
+
+Use the exact supplied video URL.
+
+Prioritize visual accuracy, polished typography, consistent spacing, real usability, and working interactions.
+
+Do not stop after generating the homepage.
+
+Do not return only a design description or sample code.
+
+Implement the complete application, run it, resolve build errors, and verify all routes and responsive layouts.
+
+**The final result should look and feel like a premium, production-ready Indian AgriTech startup platform named CropSense.**
